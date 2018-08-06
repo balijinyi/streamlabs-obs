@@ -72,8 +72,7 @@ export function useSpectron(options: ITestRunnerOptions) {
       env: {
         NODE_ENV: 'test',
         SLOBS_CACHE_DIR: t.context.cacheDir
-      },
-      startTimeout: 50000,
+      }
     });
 
     if (options.beforeAppStartCb) await options.beforeAppStartCb(t);
@@ -83,7 +82,7 @@ export function useSpectron(options: ITestRunnerOptions) {
     // Wait up to 2 seconds before giving up looking for an element.
     // This will slightly slow down negative assertions, but makes
     // the tests much more stable, especially on slow systems.
-    t.context.app.client.timeouts('implicit', 6000);
+    t.context.app.client.timeouts('implicit', 2000);
 
     // await sleep(100000);
 
